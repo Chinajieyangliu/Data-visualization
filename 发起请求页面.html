@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <button id="sendAttr">发起连接</button>
+    <button id="showText">显示返回内容</button>
+    <span id="spanText"></span>
+  </body>
+  <script>
+    const sendAttr = document.querySelector('#sendAttr')
+    const showText = document.querySelector('#showText')
+    const spanText = document.querySelector('#spanText')
+    let ws = null
+    sendAttr.onclick = function () {
+      ws = new WebSocket('ws://localhost:9998')
+      ws.onopen = () => {
+        console.log('连接成功')
+      }
+      ws.onclose = () => {
+        console.log('连接失败')
+      }
+      ws.onmessage = (mes) => {
+        console.log('接收到服务端数据')
+        console.log(mes)
+        spanText.innerHTML = mes.data
+      }
+    }
+    showText.onclick = function () {
+      ws.send(
+        JSON.stringify({
+          action: 'fullScreen',
+          socketType: 'fullScreen',
+          chartName: 'map',
+          value: 'true'
+        })
+      )
+    }
+  </script>
+</html>

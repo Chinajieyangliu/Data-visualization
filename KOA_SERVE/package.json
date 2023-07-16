@@ -1,0 +1,17 @@
+{
+  "name": "koa_serve",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "koa": "^2.14.2",
+    "koa2": "^2.0.0-alpha.7",
+    "ws": "^8.13.0"
+  }
+}
